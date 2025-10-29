@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GreenLink • Tips</title>
+
+  <link rel="stylesheet" href="home.css">
+
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+  <style>
+    .tips-page {
+      min-height: 100vh;
+      padding: 130px 16px 90px;
+    }
+    @media (max-width: 768px) {
+      .tips-page { padding-top: 100px; padding-bottom: 120px; }
+    }
+
+    .tips-page-inner { max-width: 1100px; margin: 0 auto; }
+
+    .tips-title {
+      color: #f1c40f;
+      font-size: clamp(1.4rem, 2.8vw, 1.8rem);
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      margin-bottom: 20px;
+      opacity: 0.95;
+    }
+
+    
+    .tips-scroller {
+      position: relative;
+      height: min(78vh, 760px);
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-snap-type: y mandatory;
+      -webkit-overflow-scrolling: touch;
+
+      padding: 8px 0 20px;
+
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        rgba(0,0,0,1) 0%,
+        rgba(0,0,0,1) 92%,
+        rgba(0,0,0,0) 100%
+      );
+      mask-image: linear-gradient(
+        to bottom,
+        #000 0%,
+        #000 92%,
+        transparent 100%
+      );
+    }
+
+    .tips-scroller::-webkit-scrollbar { width: 0; height: 0; }
+    .tips-scroller { scrollbar-width: none; }
+
+    .tips-list {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(26px, 3.2vh, 38px);
+      align-items: center;
+      padding: 10px 12px 30px;
+    }
+
+    .tip-card {
+      list-style: none;
+      width: min(920px, 92%);
+      border-radius: 18px;
+      padding: clamp(18px, 3vw, 30px) clamp(18px, 3vw, 36px);
+      background: linear-gradient(90deg, rgba(85,150,18,0.55), rgba(10,10,10,0.55));
+      border: 4px solid rgba(149, 233, 53, 0.35);
+      color: #cfd8dc;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+      scroll-snap-align: center;
+      transform-origin: center center;
+      transform: scale(0.92);
+      opacity: 0.28;
+      transition: transform 320ms ease, opacity 220ms ease, box-shadow 300ms ease, border-color 300ms ease, background 300ms ease;
+    }
+
+    .tip-heading {
+      color: #d6ff64;
+      font-size: clamp(1.2rem, 2.6vw, 2.2rem);
+      font-weight: 800;
+      margin-bottom: 10px;
+      text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    }
+    .tip-body {
+      font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+      line-height: 1.7;
+      color: #e9f0e6;
+      opacity: 0.95;
+    }
+
+    .tip-card.active {
+      transform: scale(1.0);
+      opacity: 1;
+      background: linear-gradient(90deg, rgba(125,205,24,0.85) 0%, rgba(0,0,0,0.65) 100%);
+      border-color: #b2ff59;
+      box-shadow:
+        0 0 0 2px rgba(78, 140, 10, 0.4) inset,
+        0 0 28px 6px rgba(180, 255, 69, 0.55),
+        0 16px 28px rgba(0,0,0,0.45);
+      animation: cardGlow 2.3s ease-in-out infinite;
+    }
+
+    @keyframes cardGlow {
+      0%   { box-shadow: 0 0 0 2px rgba(78,140,10,0.45) inset, 0 0 16px 2px rgba(180,255,69,0.35), 0 16px 28px rgba(0,0,0,0.45); }
+      50%  { box-shadow: 0 0 0 2px rgba(120,200,22,0.6) inset, 0 0 34px 10px rgba(194,255,94,0.75), 0 18px 34px rgba(0,0,0,0.5); }
+      100% { box-shadow: 0 0 0 2px rgba(78,140,10,0.45) inset, 0 0 16px 2px rgba(180,255,69,0.35), 0 16px 28px rgba(0,0,0,0.45); }
+    }
+
+    .tips-list.has-active .tip-card:not(.active) {
+      opacity: 0.18;
+      transform: scale(0.9);
+    }
+
+    @media (max-width: 560px) {
+      .tip-card { width: 94%; }
+      .tip-heading { font-size: clamp(1.1rem, 6vw, 1.6rem); }
+      .tip-body { font-size: clamp(0.9rem, 4vw, 1rem); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Mobile Top Logo -->
+  <div class="mobile-logo">
+    <img src="IMG/ICO1.png" alt="GreenLink Logo">
+  </div>
+
+  <!-- Header (same as your project) -->
+  <header>
+    <div class="logo">
+      <img src="IMG/ICO1.png" alt="GreenLink Logo">
+    </div>
+    <nav class="navbar">
+      <ul>
+        <li data-tooltip="Home">
+          <a href="home.php"><i class="fa fa-home"></i></a>
+        </li>
+        <li data-tooltip="Recycle">
+          <a href="recycle.php"><i class="fa fa-recycle"></i></a>
+        </li>
+        <li data-tooltip="Community">
+          <a href="community.php"><i class="fa fa-seedling"></i></a>
+        </li>
+        <li data-tooltip="Swap">
+          <a href="swap.php"><i class="fa fa-exchange-alt"></i></a>
+        </li>
+        <li class="active" data-tooltip="Tips">
+          <a href="tips.php"><i class="fa fa-lightbulb"></i></a>
+        </li>
+        <li data-tooltip="Profile">
+          <a href="profile.php"><i class="fa fa-user-circle"></i></a>
+        </li>
+        <li data-tooltip="Log out">
+          <a href="login.php"><i class="fa fa-right-from-bracket"></i></a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Tips page content -->
+  <main class="tips-page">
+    <div class="tips-page-inner">
+      <h1 class="tips-title">Todays Tips</h1>
+
+      <section id="tipsScroller" class="tips-scroller" tabindex="0" aria-label="Eco Tips list">
+        <ul id="tipsList" class="tips-list"></ul>
+      </section>
+    </div>
+  </main>
+
+  <!-- Page script -->
+  <script>
+    const scroller = document.getElementById("tipsScroller");
+    const listEl   = document.getElementById("tipsList");
+
+    const TIPS = [
+      { title: "Green Living Made Simple", text: "Tip: Carry a reusable water bottle and shopping bag to cut single‑use plastics in your daily routine." },
+      { title: "Save Energy, Save Earth", text: "Tip: Switch off lights and unplug chargers when not in use. LEDs lower both cost and carbon." },
+      { title: "Rethink, Reduce, Recycle", text: "Tip: Choose durable items over disposables; compost food scraps and recycle clean materials." },
+      { title: "Eat More Plants", text: "Tip: Try one plant‑based day a week. It reduces emissions and saves water." },
+      { title: "Smart Laundry", text: "Tip: Wash with cold water and air‑dry when you can. Clean the lint filter for dryer efficiency." },
+      { title: "Eco Commute", text: "Tip: Walk, cycle, carpool, or take transit. Combine errands to cut extra trips." },
+      { title: "Mindful Water Use", text: "Tip: Fix dripping taps, install aerators, and take shorter showers to conserve water." },
+      { title: "Buy Local, Seasonal", text: "Tip: Choose local, seasonal produce to reduce transport emissions and support your community." },
+      { title: "Second‑Life Goods", text: "Tip: Repair before replacing. Donate, sell, or swap items to extend their life." },
+      { title: "Clean Green", text: "Tip: Use vinegar, baking soda, and lemon for many cleaning tasks—low tox and low waste." },
+      { title: "Battery Sense", text: "Tip: Use rechargeable batteries and recycle old ones at approved drop‑off points." },
+      { title: "Paper Smarts", text: "Tip: Go digital for bills/receipts and print double‑sided only when necessary." },
+      { title: "Shade And Insulate", text: "Tip: Close blinds in summer, seal drafts in winter. Insulation saves energy year‑round." },
+      { title: "Climate‑Friendly Cooking", text: "Tip: Use lids, match pot size to burner, and batch‑cook to save time and energy." },
+      { title: "Standby Power Cut", text: "Tip: Plug devices into a switchable power strip and turn it off when idle." },
+      { title: "E‑Waste Drop‑Off", text: "Tip: Recycle phones, cables, and electronics at e‑waste centers to recover valuable materials." },
+      { title: "Library And Sharing", text: "Tip: Borrow books, tools, or appliances from libraries and community sharing hubs." },
+      { title: "Conscious Fashion", text: "Tip: Buy fewer, higher‑quality clothes. Wash cold, line‑dry, and repair to extend life." },
+      { title: "Compost Starter", text: "Tip: Compost fruit/veg scraps, coffee grounds, and yard waste to make soil and cut landfill methane." },
+      { title: "Rain Barrel Ready", text: "Tip: If allowed in your area, capture rainwater for gardens and outdoor cleaning." }
+    ];
+
+    function renderTips(tips) {
+      const html = tips.map(t => `
+        <li class="tip-card">
+          <h3 class="tip-heading">${escapeHTML(t.title)}</h3>
+          <p class="tip-body">${escapeHTML(t.text)}</p>
+        </li>
+      `).join("");
+      listEl.innerHTML = html;
+
+      scroller.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      requestAnimationFrame(() => {
+        updateActiveCard(true);
+        listEl.classList.add("has-active");
+      });
+    }
+
+    function escapeHTML(str) {
+      return String(str)
+        .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;").replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function updateActiveCard(forceTopCheck = false) {
+      const cards = Array.from(listEl.querySelectorAll(".tip-card"));
+      if (!cards.length) return;
+
+      const TOP_THRESHOLD = 6;   // px
+      const BOTTOM_THRESHOLD = 6;
+      const maxScroll = scroller.scrollHeight - scroller.clientHeight;
+
+      if (forceTopCheck || scroller.scrollTop <= TOP_THRESHOLD) {
+        cards.forEach(c => c.classList.remove("active"));
+        cards[0]?.classList.add("active");
+        return;
+      }
+      if (maxScroll - scroller.scrollTop <= BOTTOM_THRESHOLD) {
+        cards.forEach(c => c.classList.remove("active"));
+        cards[cards.length - 1]?.classList.add("active");
+        return;
+      }
+
+      const scrollerRect = scroller.getBoundingClientRect();
+      const centerY = scrollerRect.top + scrollerRect.height / 2;
+
+      let bestCard = null;
+      let bestDist = Infinity;
+
+      for (const card of cards) {
+        const r = card.getBoundingClientRect();
+        const cardCenter = r.top + r.height / 2;
+        const dist = Math.abs(centerY - cardCenter);
+        if (dist < bestDist) {
+          bestDist = dist;
+          bestCard = card;
+        }
+      }
+
+      cards.forEach(c => c.classList.remove("active"));
+      if (bestCard) bestCard.classList.add("active");
+    }
+
+    let scrollRAF = null;
+    scroller.addEventListener("scroll", () => {
+      if (scrollRAF) return;
+      scrollRAF = requestAnimationFrame(() => {
+        updateActiveCard();
+        scrollRAF = null;
+      });
+    });
+    window.addEventListener("resize", () => updateActiveCard());
+
+    // Initialize
+    renderTips(TIPS);
+  </script>
+</body>
+</html>

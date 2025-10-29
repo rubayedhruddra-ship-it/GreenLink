@@ -1,0 +1,434 @@
+:root {
+  --clr-primary: #e7f8b6;
+  --clr-light: #ffffff;
+  --transition: 0.25s ease;
+  --radius: 10px;
+  --card-bg: linear-gradient(145deg, #0e1a13, #132218);
+  --border: 1px solid rgba(255, 255, 255, 0.08);
+  --max: 1100px;
+}
+
+
+.swap-wrapper {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding: 1.25rem;
+  margin-top: clamp(100px, 10vw, 140px);
+  margin-bottom: 40px;
+}
+@media (max-width: 768px) {
+  .swap-wrapper {
+    padding: 1rem;
+    margin-top: calc(80px + env(safe-area-inset-top));
+    margin-bottom: calc(110px + env(safe-area-inset-bottom));
+  }
+}
+
+
+.card {
+  background: linear-gradient(145deg, #0e1a13, #132218);
+  border: var(--border);
+  box-shadow: 0 0 14px rgba(0, 255, 100, 0.06);
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 1.25rem;
+  transition: box-shadow 0.25s ease, transform 0.12s ease;
+}
+.card:hover {
+  box-shadow: 0 0 20px rgba(0, 255, 100, 0.1);
+  transform: translateY(-2px);
+}
+
+/* global search */
+.global-search {
+  display:flex;
+  gap:.6rem;
+  align-items:center;
+  padding:.8rem 1rem;
+  border-radius:10px;
+  margin-top:0.6rem; /* small extra gap from heading */
+  background: rgba(0,0,0,0.16);
+  border: var(--border);
+}
+.global-search input {
+  flex:1;
+  padding:.72rem;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.04);
+  background:transparent;
+  color:#fff;
+  font-size:0.98rem;
+}
+
+/* headings */
+.swap-head {
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+.swap-head h1 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  color: var(--clr-primary);
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(46, 204, 113, 0.12);
+}
+.swap-head p {
+  opacity: 0.9;
+  max-width: 760px;
+  margin: 0.4rem auto 0;
+}
+
+/* tabs */
+.swap-tabs {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+.tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  padding: 0.55rem 1.1rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  transition: var(--transition);
+  font-weight: 700;
+}
+.tab-btn.active {
+  background: var(--clr-primary);
+  color: #0b2021;
+}
+.tab-btn:hover {
+  transform: translateY(-2px);
+}
+.tab-pane {
+  display: none;
+}
+.tab-pane.active {
+  display: block;
+}
+
+/* compose */
+.compose .section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.compose-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 1.2rem;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .compose-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+.field span {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+.field input,
+.field textarea,
+.field select {
+  background: rgba(255, 255, 255, 0.03);
+  border: var(--border);
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  border-color: var(--clr-primary);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* add-photo and image preview */
+.add-photo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.03);
+  transition: 0.25s ease;
+}
+.add-photo:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.add-photo input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.img-preview {
+  width: 100%;
+  height: 220px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #071512;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 600px) {
+  .img-preview {
+    height: 140px;
+  }
+}
+
+/* grid/post cards like recycle */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.item-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 0.9rem;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.16);
+  border: var(--border);
+}
+.item-thumb {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #0b2021;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.item-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.item-title {
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+.item-desc {
+  opacity: 0.95;
+  font-size: 0.95rem;
+}
+.item-meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.8rem;
+}
+
+/* owner / actions */
+.owner {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  opacity: 0.9;
+  font-size: 0.85rem;
+}
+.owner img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+.actions {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-top: 0.6rem;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-weight: 700;
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn--primary {
+  background: var(--clr-primary);
+  color: #0b2021;
+  padding: .62rem 1rem;
+}
+.btn--ghost {
+  background: rgba(255, 255, 255, 0.06);
+}
+.btn-requested {
+  background: rgba(255, 255, 255, 0.06);
+  color: #b8ffd9;
+  border: 1px dashed rgba(46, 204, 113, 0.12);
+  cursor: default;
+}
+
+/* lists for My Swaps / Requested */
+.list-card {
+  margin-top: 0.6rem;
+  padding: 0.6rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+.req-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+/* modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1202;
+}
+.modal.open {
+  display: flex;
+}
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+.modal__dialog {
+  position: relative;
+  max-width: 520px;
+  width: 94%;
+  z-index: 2;
+  padding: 18px;
+  border-radius: 10px;
+  background: var(--card-bg);
+  border: var(--border);
+  box-shadow: 0 0 14px rgba(0, 255, 100, 0.08);
+}
+.modal__dialog .field {
+  margin-bottom: 1.05rem;
+  display: block;
+}
+.modal__dialog .field span {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+.modal__dialog input,
+.modal__dialog textarea,
+.modal__dialog select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: var(--border);
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+.modal__dialog input:focus,
+.modal__dialog textarea:focus,
+.modal__dialog select:focus {
+  border-color: var(--clr-primary);
+  background: rgba(255, 255, 255, 0.06);
+}
+.modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: .8rem;
+  margin-top: .65rem;
+}
+.modal__dialog .btn {
+  padding: .6rem .95rem;
+  border-radius: 10px;
+}
+
+/* Remove icons inside buttons and center button text on Swap page */
+.swap-wrapper .btn i,
+.swap-wrapper .tab-btn i,
+.swap-wrapper button i,
+.swap-wrapper .btn .fa,
+.swap-wrapper .tab-btn .fa {
+  display: none !important;
+}
+
+.swap-wrapper .btn,
+.swap-wrapper .tab-btn,
+.swap-wrapper button {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.4rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* ensure tab button text is horizontally centered */
+.swap-wrapper .swap-tabs .tab-btn { justify-content: center; }
+
+/* responsive tweaks */
+@media (max-width: 700px) {
+  .swap-wrapper {
+    padding: 1rem;
+    margin-bottom: 120px;
+  }
+  .tab-btn {
+    padding: 0.45rem 0.7rem;
+  }
+  .item-thumb {
+    height: 160px;
+  }
+}
