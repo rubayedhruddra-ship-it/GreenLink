@@ -50,6 +50,97 @@ GreenLink is a web application designed to promote environmental sustainability 
 - Login system: `login.php`
 - Profile management: `profile.php`
 
+⚙️ How to Run GreenLink in XAMPP (Localhost Setup)
+
+Follow these steps carefully to get GreenLink running on your local server using XAMPP.
+
+🧩 Step 1: Install XAMPP
+Download XAMPP from the official site:
+👉 https://www.apachefriends.org/download.html
+
+Install XAMPP on your computer (default path: C:\xampp).
+
+Open the XAMPP Control Panel and start the following modules:
+
+✅ Apache
+✅ MySQL
+📁 Step 2: Add Project to htdocs Folder
+
+Locate your XAMPP installation directory:
+C:\xampp\htdocs\
+
+
+Copy or extract your project folder (GreenLink) into the htdocs directory:
+C:\xampp\htdocs\GreenLink
+
+🗄️ Step 3: Set Up the MySQL Database
+
+-In your browser, go to: http://localhost/phpmyadmin/
+
+-Click New on the left sidebar and create a new database named: greenlink
+-After the database is created, click Import at the top menu.
+-Click Choose File, then select: C:\xampp\htdocs\GreenLink\mysql-init.sql
+-Click Go to import the database structure and sample data.
+                      OR
+-Go to SQL in the top bar it will take to the code editor.
+-Copy the whole SQL code from mysql-init.sql and paste it in the SQL code editor.
+-Select all and click CTRL + Enter (Windows) or Cmd + Enter (Mac) the database will be ready.
+
+⚙️ Step 4: Configure Database Connection
+
+Open the project folder and navigate to:
+
+C:\xampp\htdocs\GreenLink\inc\config.php
+
+
+Open config.php in a text editor and verify or edit the following:
+
+<?php
+$servername = "localhost";
+$username = "root";     // default XAMPP username
+$password = "";         // leave blank unless you set a password
+$dbname = "greenlink";  // database name you created
+?>
+
+🧾 Step 5: Set File Permissions (Optional)
+
+If file uploads are used (for profile pictures or swap items):
+
+Ensure the following folder exists:
+
+C:\xampp\htdocs\GreenLink\uploads
+
+
+Right-click → Properties → Security → Give “Full Control” to the current user.
+
+🚀 Step 6: Run the Application
+
+Open your browser and enter:
+
+http://localhost/GreenLink/
+
+The homepage should load successfully.
+
+You can now:
+
+📝 Register a new user
+🔐 Log in to your account
+💬 Post content, swap items, or view recycling tips
+🧠 Step 7: (Optional) Manage Database with phpMyAdmin
+
+To view users or posts, open:
+
+http://localhost/phpmyadmin/
+
+Select the greenlink database to see all tables and data.
+
+⚡ Troubleshooting Tips
+Issue	Possible Fix
+❌ Database connection failed	Check credentials in inc/config.php
+⚠️ 404 Not Found	Ensure the project folder name is exactly GreenLink
+🧩 PHP errors displayed	Verify PHP version ≥ 8.0 and enable mysqli in PHP settings
+📂 Upload not working	Ensure uploads/ folder has write permission
+
 ## Contributing
 
 Feel free to submit issues and enhancement requests.
