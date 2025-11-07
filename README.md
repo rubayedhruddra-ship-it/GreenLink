@@ -2,6 +2,23 @@
 
 GreenLink is a web application designed to promote environmental sustainability through community engagement, recycling awareness, and item swapping.
 
+Few Screenshots:
+
+<img width="1858" height="906" alt="image" src="https://github.com/user-attachments/assets/e7ec878d-3983-4f60-a52c-bdc4950a79a2" />
+
+<img width="1919" height="927" alt="image" src="https://github.com/user-attachments/assets/3a4e4f48-07be-43aa-8ae8-3fa2a13b5a3d" />
+
+<img width="1912" height="927" alt="image" src="https://github.com/user-attachments/assets/bec9457a-0a5e-48a5-b0d2-cfbd8ad5988e" />
+
+<img width="1872" height="907" alt="image" src="https://github.com/user-attachments/assets/50be25e5-7509-48c2-8e20-ee2c4256fc8e" />
+
+<img width="1900" height="923" alt="image" src="https://github.com/user-attachments/assets/1f8739f2-9c98-4c03-b0d6-243c56f2ccc5" />
+
+<img width="1819" height="912" alt="image" src="https://github.com/user-attachments/assets/84e69c50-dcc7-4dc3-9bbf-fbba06a110a9" />
+
+<img width="1869" height="926" alt="image" src="https://github.com/user-attachments/assets/fdae5928-3beb-41db-8d2e-5ac837bde72b" />
+
+
 ## Features
 
 - **Community Platform**: Connect with like-minded individuals interested in sustainability
