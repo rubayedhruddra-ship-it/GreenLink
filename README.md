@@ -125,7 +125,7 @@ C:\xampp\htdocs\GreenLink
 
 -Click Go to import the database structure and sample data.
 
-                      OR
+ OR
 
 -Go to SQL in the top bar it will take to the code editor.
 
